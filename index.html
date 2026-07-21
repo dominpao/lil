@@ -1,25 +1,346 @@
 <!DOCTYPE html>
+<html lang="es">
 <head>
-  <title>LiL, Life is Learning</title>
-   <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/responsive.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lil4Change — Life is Learning</title>
+<meta name="description" content="Videojuegos curados para potenciar el aprendizaje de niños y niñas de 9 a 13 años.">
+<link rel="icon" href="assets/lil-logo7.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Nunito",system-ui,sans-serif;background:#f6f4ef;color:#2b3a53;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  @keyframes lilDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+  @keyframes lilFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes lilDandelionIdle{0%,100%{transform:translate(0,0)}50%{transform:translate(1px,-4px)}}
+  @keyframes lilRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes lilDrift{0%{opacity:0;transform:translate(0,0)}20%{opacity:.8}100%{opacity:0;transform:translate(46px,-90px)}}
+  @media (max-width:760px){ .lil-navlinks{display:none !important} .lil-hamburger{display:flex !important} .lil-desktoponly{display:none !important} }
+  @media (max-width:640px){ .lil-hero{min-height:560px !important} .lil-herofx{top:185px !important;bottom:auto !important;height:250px !important;opacity:.95} }
+  @media (max-width:480px){ .lil-tagline{display:none !important} }
+  @media (max-width:720px){ .lil-howgrid{grid-template-columns:1fr !important} }
+  .lil-cta-primary{transition:transform .18s ease,box-shadow .18s ease}
+  .lil-cta-primary:hover{transform:translateY(-2px)}
+</style>
 </head>
 <body>
-    <header>
-         <div class="navbar display-flex">
-            <img src="/images/LiL-logo.jpg" alt="LIL_LOGO" class="lil-logo">
-         </div>
-          <div class="text-form-aligner"> <!--  centers its child horizontally -->
+<div style="min-height:100vh">
 
-            <div class="text-form-container display-flex">
-                <h1>Welcome to LIL4Change website</h1>
-                <p>
-                    <h2>We are born, we grow, we reproduce, and we die like any other living being.</h2>
-                    <h2>What transforms us is what we learn and what we do with it.</h2>
-                </p>
-                <h2>Life is Learning coming soon</h2>                
-            </div>
-    </header>
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:40;backdrop-filter:blur(12px);background:rgba(246,244,239,.78);border-bottom:1px solid rgba(63,127,212,.12)">
+    <nav style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px">
+      <a href="index.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-right:auto">
+        <img src="assets/lil-logo7.png" alt="Lil4Change" style="width:44px;height:44px;border-radius:50%;box-shadow:0 4px 14px rgba(20,32,64,.28)">
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:20px;letter-spacing:.2px;color:#26364f">Lil<span style="color:#3f7fd4">4</span>Change</span>
+          <span class="lil-tagline" style="font-size:10.5px;color:#6b7c98;margin-top:3px;letter-spacing:.3px">Life is Learning</span>
+        </span>
+      </a>
+      <div style="display:flex;align-items:center;gap:24px" class="lil-navlinks">
+        <a href="index.html" data-i18n="navHome" style="color:#3f7fd4;text-decoration:none;font-weight:800;font-size:15px">Inicio</a>
+        <a href="about.html" data-i18n="navAbout" style="color:#42536e;text-decoration:none;font-weight:700;font-size:15px">Sobre Lil</a>
+        <a href="games.html" data-i18n="navGames" style="color:#42536e;text-decoration:none;font-weight:700;font-size:15px">Juegos</a>
+        <a href="contact.html" data-i18n="navContact" style="color:#42536e;text-decoration:none;font-weight:700;font-size:15px">Contacto</a>
+      </div>
+      <button onclick="toggleMenu()" aria-label="Menu" class="lil-hamburger" style="display:none;align-items:center;justify-content:center;width:42px;height:42px;background:rgba(63,127,212,.1);border:1px solid rgba(63,127,212,.28);border-radius:12px;cursor:pointer;order:5">
+        <svg id="lilIconOpen" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#3f7fd4" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"></line><line x1="3" y1="10" x2="17" y2="10"></line><line x1="3" y1="14" x2="17" y2="14"></line></svg>
+        <svg id="lilIconClose" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#3f7fd4" stroke-width="2" stroke-linecap="round" style="display:none"><line x1="4" y1="4" x2="16" y2="16"></line><line x1="16" y1="4" x2="4" y2="16"></line></svg>
+      </button>
+      <button onclick="toggleLang()" aria-label="Toggle language" class="lil-desktoponly" style="display:flex;align-items:center;gap:6px;background:rgba(63,127,212,.08);border:1px solid rgba(63,127,212,.25);color:#3f7fd4;font-family:'Nunito';font-weight:700;font-size:13px;padding:7px 12px;border-radius:999px;cursor:pointer">
+        <span id="lilEsA">ES</span><span style="opacity:.4">/</span><span id="lilEnA">EN</span>
+      </button>
+    </nav>
+    <div id="lilMobileMenu" style="display:none;flex-direction:column;padding:8px 24px 20px;gap:2px;border-top:1px solid rgba(63,127,212,.12)">
+      <a href="index.html" onclick="closeMenu()" data-i18n="navHome" style="color:#3f7fd4;text-decoration:none;font-weight:800;font-size:17px;padding:13px 4px">Inicio</a>
+      <a href="about.html" onclick="closeMenu()" data-i18n="navAbout" style="color:#2b3a53;text-decoration:none;font-weight:700;font-size:17px;padding:13px 4px;border-top:1px solid rgba(63,127,212,.1)">Sobre Lil</a>
+      <a href="games.html" onclick="closeMenu()" data-i18n="navGames" style="color:#2b3a53;text-decoration:none;font-weight:700;font-size:17px;padding:13px 4px;border-top:1px solid rgba(63,127,212,.1)">Juegos</a>
+      <a href="contact.html" onclick="closeMenu()" data-i18n="navContact" style="color:#2b3a53;text-decoration:none;font-weight:700;font-size:17px;padding:13px 4px;border-top:1px solid rgba(63,127,212,.1)">Contacto</a>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 4px 6px;border-top:1px solid rgba(63,127,212,.1)">
+        <span data-i18n="langLabel" style="font-size:14px;font-weight:700;color:#6b7c98">Idioma</span>
+        <button onclick="toggleLang()" aria-label="Toggle language" style="display:flex;align-items:center;gap:6px;background:rgba(63,127,212,.08);border:1px solid rgba(63,127,212,.25);color:#3f7fd4;font-family:'Nunito';font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer"><span id="lilEsB">ES</span><span style="opacity:.4">/</span><span id="lilEnB">EN</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="lil-hero" style="position:relative;overflow:hidden;min-height:660px;background:linear-gradient(180deg,#dcecfb 0%,#eaf4fc 46%,#f6f4ef 100%)">
+    <div class="lil-herofx" style="position:absolute;inset:0;pointer-events:none">
+      <svg viewBox="0 0 1280 720" preserveAspectRatio="xMinYMid meet" style="position:absolute;inset:0;width:100%;height:100%">
+        <defs>
+          <radialGradient id="lilGlow" cx="90%" cy="18%" r="26%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity=".7"></stop>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+          </radialGradient>
+          <mask id="lilReveal">
+            <path id="lilMaskPath" d="" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1">
+              <animate id="lilRevealAnim" attributeName="stroke-dashoffset" from="1" to="0" dur="9s" fill="freeze" begin="indefinite" calcMode="spline" keyTimes="0;1" keySplines=".42 .04 .28 1"></animate>
+            </path>
+          </mask>
+        </defs>
+        <circle cx="1150" cy="150" r="200" fill="url(#lilGlow)"></circle>
+        <path id="lilTrailPath" d="" fill="none" stroke="#a9c2e4" stroke-width="5" stroke-linecap="round" stroke-dasharray="0.01 15" opacity="0.85" vector-effect="non-scaling-stroke" mask="url(#lilReveal)"></path>
+        <g>
+          <animateMotion id="lilMotionAnim" dur="9s" fill="freeze" rotate="0" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".42 .04 .28 1" path="" begin="indefinite"></animateMotion>
+          <g id="lilPuffWrap" style="animation:lilDandelionIdle 6s ease-in-out 9s infinite"></g>
+        </g>
+      </svg>
+      <div style="position:absolute;left:52%;top:34%;opacity:0;animation:lilDrift 6s ease-out 9.2s infinite"><svg width="16" height="16" viewBox="0 0 16 16" stroke="#8aa6cf" stroke-width="1" stroke-linecap="round"><line x1="8" y1="8" x2="8" y2="1"></line><line x1="8" y1="8" x2="13" y2="4"></line><line x1="8" y1="8" x2="3" y2="4"></line><circle cx="8" cy="0.5" r="1" fill="#8aa6cf" stroke="none"></circle></svg></div>
+      <div style="position:absolute;left:70%;top:26%;opacity:0;animation:lilDrift 7s ease-out 10.2s infinite"><svg width="13" height="13" viewBox="0 0 16 16" stroke="#9fb6d8" stroke-width="1" stroke-linecap="round"><line x1="8" y1="8" x2="8" y2="1"></line><line x1="8" y1="8" x2="13" y2="4"></line><line x1="8" y1="8" x2="3" y2="4"></line></svg></div>
+    </div>
+
+    <div style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px">
+      <div style="max-width:720px;padding:104px 0 116px">
+        <h1 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(36px,5.6vw,62px);line-height:1.06;margin:0;letter-spacing:-.6px;color:#22334d;animation:lilRise .7s ease-out both"><span data-i18n="heroPre">Transformando el tiempo de pantalla en</span> <span style="color:#3f7fd4" data-i18n="heroHighlight">tiempo de crecimiento.</span></h1>
+        <p id="lilHeroDesc" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#4f6079;margin:24px 0 0;max-width:700px;animation:lilRise .7s ease-out .15s both"></p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;animation:lilRise .7s ease-out .3s both">
+          <a href="#como-lo-hacemos" class="lil-cta-primary" data-i18n="heroCta" style="background:linear-gradient(135deg,#5a97e6,#3f7fd4);color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:15px 30px;border-radius:999px;box-shadow:0 10px 24px rgba(63,127,212,.35)">Conocer nuestra propuesta</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO LO HACEMOS -->
+  <section id="como-lo-hacemos" style="max-width:1120px;margin:0 auto;padding:72px 24px 20px;scroll-margin-top:88px">
+    <div style="text-align:center;max-width:640px;margin:0 auto 44px">
+      <h2 data-i18n="howTitle" style="font-family:'Fredoka';font-weight:600;font-size:clamp(28px,4vw,40px);margin:0;color:#22334d">Cómo lo hacemos</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1.55fr 1fr;gap:22px;max-width:960px;margin:0 auto" class="lil-howgrid">
+      <div style="background:#fff;border:1px solid rgba(63,127,212,.14);border-radius:22px;padding:36px 34px;box-shadow:0 12px 30px rgba(63,127,212,.08)">
+        <div style="width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(150deg,#e5f0fc,#d4e6fa);border:1px solid rgba(63,127,212,.18)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3f7fd4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="16" y1="16" x2="21" y2="21"></line></svg>
+        </div>
+        <h3 data-i18n="curationTitle" style="font-family:'Fredoka';font-weight:600;font-size:22px;margin:20px 0 10px;color:#22334d">Curaduría de juegos</h3>
+        <div id="lilCurationParas" style="display:flex;flex-direction:column;gap:12px"></div>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(234,181,78,.28);border-radius:22px;padding:36px 34px;box-shadow:0 12px 30px rgba(234,181,78,.1)">
+        <div style="width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(150deg,#fbf0d9,#f7e6bd);border:1px solid rgba(234,181,78,.3)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d69a2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><polygon points="15.5 8.5 10.5 10.5 8.5 15.5 13.5 13.5" fill="#f7e6bd"></polygon></svg>
+        </div>
+        <h3 data-i18n="outlookTitle" style="font-family:'Fredoka';font-weight:600;font-size:22px;margin:20px 0 10px;color:#22334d">Una nueva mirada</h3>
+        <div id="lilOutlookDesc" style="display:flex;flex-direction:column;gap:12px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ -->
+  <section id="por-que" style="max-width:1120px;margin:0 auto;padding:64px 24px">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,#e7f1fc,#f2f8fd);border:1px solid rgba(63,127,212,.16);border-radius:26px;padding:clamp(40px,6vw,64px);text-align:center">
+      <div style="position:relative;max-width:720px;margin:0 auto">
+        <span data-i18n="whyTag" style="display:inline-block;color:#3f7fd4;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase">¿Por qué?</span>
+        <h2 data-i18n="whyTitle" style="font-family:'Fredoka';font-weight:600;font-size:clamp(26px,4vw,38px);margin:14px 0 0;color:#22334d;line-height:1.2">Creemos que el diseño de los videojuegos importa.</h2>
+        <div id="lilWhyParas" style="display:flex;flex-direction:column;gap:14px;margin-top:18px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCIÓN FINAL -->
+  <section style="max-width:1120px;margin:0 auto;padding:20px 24px 24px">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,#4f8fe0,#3f7fd4);border-radius:28px;padding:clamp(40px,6vw,68px);text-align:center;box-shadow:0 20px 50px rgba(63,127,212,.3)">
+      <div style="position:absolute;top:-30px;right:-10px;color:#ffe6a6;opacity:.55;font-size:44px;animation:lilFloat 5s ease-in-out infinite">✦</div>
+      <h2 id="lilFinalTitle" style="font-family:'Fredoka';font-weight:600;font-size:clamp(24px,3.6vw,36px);margin:0 auto;color:#fff;letter-spacing:-.3px;max-width:760px;line-height:1.28"></h2>
+      <div id="lilFinalSub" style="margin:16px auto 0;max-width:820px"></div>
+      <div style="display:flex;justify-content:center;margin-top:30px">
+        <a href="games.html" class="lil-cta-primary" data-i18n="finalBtn" style="background:#fff;color:#3f7fd4;text-decoration:none;font-weight:800;font-size:16px;padding:16px 34px;border-radius:999px;box-shadow:0 12px 28px rgba(20,40,80,.25)">Ver los juegos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="max-width:1120px;margin:44px auto 0;padding:44px 24px 48px;border-top:1px solid rgba(63,127,212,.14)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px">
+      <div>
+        <a href="index.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-bottom:16px">
+          <img src="assets/lil-logo7.png" alt="Lil4Change" style="width:40px;height:40px;border-radius:50%">
+          <span style="font-family:'Fredoka';font-weight:600;font-size:18px;color:#26364f">Lil<span style="color:#3f7fd4">4</span>Change</span>
+        </a>
+        <p data-i18n="footerDesc" style="font-size:15px;line-height:1.6;color:#51617b;margin:0;max-width:320px"></p>
+      </div>
+      <div>
+        <h5 data-i18n="footerNavTitle" style="font-family:'Fredoka';font-weight:600;font-size:16px;color:#26364f;margin:0 0 16px">Navegación</h5>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px">
+          <li><a href="index.html" data-i18n="navHome" style="color:#51617b;text-decoration:none;font-weight:600;font-size:15px">Inicio</a></li>
+          <li><a href="about.html" data-i18n="navAbout" style="color:#51617b;text-decoration:none;font-weight:600;font-size:15px">Sobre Lil</a></li>
+          <li><a href="games.html" data-i18n="navGames" style="color:#51617b;text-decoration:none;font-weight:600;font-size:15px">Juegos</a></li>
+          <li><a href="contact.html" data-i18n="navContact" style="color:#51617b;text-decoration:none;font-weight:600;font-size:15px">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-i18n="footerCopyright" style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(63,127,212,.12);text-align:center;font-size:13.5px;color:#6b7c98"></div>
+  </footer>
+</div>
+
+<script>
+const DICT = {
+  es: {
+    navHome:"Inicio", navAbout:"Sobre Lil", navGames:"Juegos", navContact:"Contacto", langLabel:"Idioma",
+    heroPre:"Transformando el tiempo de pantalla en", heroHighlight:"tiempo de crecimiento.",
+    heroDescLines:[
+      "Te ayudamos a descubrir las capacidades que los chicos despliegan naturalmente al jugar, a través de videojuegos cuidadosamente seleccionados por su diseño."
+    ],
+    heroCta:"Conocer nuestra propuesta",
+    howTitle:"Cómo lo hacemos",
+    curationTitle:"Curaduría de juegos",
+    curationParas:[
+      "Seleccionamos videojuegos gratuitos para chicos desde los 9 años que los invitan a explorar, descubrir, crear y resolver desafíos de manera autónoma.",
+      "Cada juego propone una experiencia diferente que les permite tomar decisiones, probar nuevas ideas y avanzar a su propio ritmo."
+    ],
+    outlookTitle:"Una nueva mirada",
+    outlookDesc:[
+      "Te ayudamos a reconocer las fortalezas, estrategias y formas de aprender que emergen naturalmente durante el juego.",
+      "Descubrir aquello en lo que somos buenos es clave para desarrollar nuevas capacidades y expandir nuestro potencial."
+    ],
+    whyTag:"¿Por qué?",
+    whyTitle:"Creemos que el diseño de los videojuegos importa.",
+    whyParas:[
+      "Influye en la manera en que los chicos piensan, resuelven y aprenden.",
+      "Por eso investigamos y compartimos experiencias digitales con propósito."
+    ],
+    finalTitleLines:["Conoce nuestra selección de videojuegos."],
+    finalSub:[
+      "Reconecta con tu manera única de aprender.",
+      "Pruébalos en familia.",
+      "Descubre nuevas formas de acompañar el desarrollo de tu hijo."
+    ],
+    finalBtn:"Ver los juegos",
+    footerDesc:"Videojuegos curados para potenciar el aprendizaje de niños y niñas de 9 a 13 años.",
+    footerNavTitle:"Navegación",
+    footerCopyright:"© 2026 Lil4Change. Todos los derechos reservados."
+  },
+  en: {
+    navHome:"Home", navAbout:"About Lil", navGames:"Games", navContact:"Contact", langLabel:"Language",
+    heroPre:"Turning screen time into", heroHighlight:"growth time.",
+    heroDescLines:[
+      "We help you discover the abilities that children naturally display through play, using video games carefully selected for their design."
+    ],
+    heroCta:"Discover our approach",
+    howTitle:"How we do it",
+    curationTitle:"Game curation",
+    curationParas:[
+      "We select free video games for kids ages 9 and up that invite them to explore, discover, create, and solve challenges on their own.",
+      "Each game offers a different experience that lets them make decisions, try new ideas, and move forward at their own pace."
+    ],
+    outlookTitle:"A new outlook",
+    outlookDesc:[
+      "We help you recognize the strengths, strategies, and ways of learning that naturally emerge during play.",
+      "Discovering what we're good at is key to developing new abilities and expanding our potential."
+    ],
+    whyTag:"Why?",
+    whyTitle:"We believe game design matters.",
+    whyParas:[
+      "It shapes the way kids think, solve, and learn.",
+      "That's why we research and share digital experiences with purpose."
+    ],
+    finalTitleLines:["Check out our video game selection."],
+    finalSub:[
+      "Reconnect with your own unique way of learning.",
+      "Try them out as a family.",
+      "Discover new ways to support your child's development."
+    ],
+    finalBtn:"See the games",
+    footerDesc:"Curated video games to nurture the learning of kids ages 9 to 13.",
+    footerNavTitle:"Navigation",
+    footerCopyright:"© 2026 Lil4Change. All rights reserved."
+  }
+};
+
+function getLang(){ try { return localStorage.getItem('lil-lang') === 'en' ? 'en' : 'es'; } catch(e){ return 'es'; } }
+let menuOpen = false;
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function applyLang(lang){
+  const t = DICT[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if (t[k] != null) el.textContent = t[k];
+  });
+  document.getElementById('lilHeroDesc').innerHTML = t.heroDescLines.map(l=>`<span style="display:block">${esc(l)}</span>`).join('');
+  document.getElementById('lilCurationParas').innerHTML = t.curationParas.map(p=>`<p style="font-size:16px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
+  document.getElementById('lilOutlookDesc').innerHTML = t.outlookDesc.map(p=>`<p style="font-size:16px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
+  document.getElementById('lilWhyParas').innerHTML = t.whyParas.map(p=>`<p style="font-size:17.5px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
+  document.getElementById('lilFinalTitle').innerHTML = t.finalTitleLines.map(l=>`<span style="display:block;margin:0 0 6px">${esc(l)}</span>`).join('');
+  document.getElementById('lilFinalSub').innerHTML = t.finalSub.map(l=>`<p style="font-size:clamp(14px,1.7vw,17px);color:rgba(255,255,255,.92);margin:0 0 5px;line-height:1.4">${esc(l)}</p>`).join('');
+  const on = "color:#22334d;font-weight:800", off = "color:#93a3bd;font-weight:600";
+  ['lilEsA','lilEsB'].forEach(id=>document.getElementById(id).style.cssText = lang==='es'?on:off);
+  ['lilEnA','lilEnB'].forEach(id=>document.getElementById(id).style.cssText = lang==='en'?on:off);
+  try { localStorage.setItem('lil-lang', lang); } catch(e){}
+}
+function toggleLang(){ applyLang(getLang()==='es'?'en':'es'); }
+function toggleMenu(){
+  menuOpen = !menuOpen;
+  document.getElementById('lilMobileMenu').style.display = menuOpen ? 'flex' : 'none';
+  document.getElementById('lilIconOpen').style.display = menuOpen ? 'none' : 'block';
+  document.getElementById('lilIconClose').style.display = menuOpen ? 'block' : 'none';
+}
+function closeMenu(){ if(menuOpen) toggleMenu(); }
+
+// ---- Hero dandelion animation (ported from the original) ----
+function buildTrailPath(){
+  const baseTrail = "M 0 648 C 70 640 150 622 215 602 C 300 578 356 470 340 388 C 330 320 280 322 274 390 C 268 460 312 566 380 588 C 430 604 486 596 534 560 C 620 508 692 300 674 214 C 662 150 606 152 598 226 C 590 310 640 470 714 494 C 762 508 812 500 856 470 C 936 428 1000 232 984 166 C 974 108 922 110 916 178 C 908 250 952 382 1050 402 C 1120 388 1164 278 1200 140";
+  const SK = 0, BASE_Y = 720, VS = 1, HS = 1, XC = 600;
+  const toks = baseTrail.match(/[MC]|-?\d+(?:\.\d+)?/g);
+  const outT = [];
+  for (let i = 0; i < toks.length; i++) {
+    if (/[MC]/.test(toks[i])) { outT.push(toks[i]); continue; }
+    const x = parseFloat(toks[i]), y = parseFloat(toks[i + 1]);
+    const y2 = BASE_Y - (BASE_Y - y) * VS;
+    const x1 = (x - XC) * HS + XC;
+    outT.push((x1 + SK * (BASE_Y - y2)).toFixed(1), y2.toFixed(1));
+    i++;
+  }
+  return outT.join(" ");
+}
+function buildPuff(){
+  const SVGNS = "http://www.w3.org/2000/svg";
+  let seed = 7;
+  const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+  function el(tag, attrs){ const n = document.createElementNS(SVGNS, tag); for(const k in attrs) n.setAttribute(k, attrs[k]); return n; }
+  const g = el("g", { transform: "scale(1.5)" });
+  g.appendChild(el("circle", { cx:0, cy:0, r:20, fill:"#ffffff", opacity:0.22 }));
+  const N = 34;
+  for (let i = 0; i < N; i++) {
+    const a = (i / N) * Math.PI * 2 + (rnd() - 0.5) * 0.22;
+    const len = 17 + rnd() * 8;
+    const op = 0.28 + rnd() * 0.32;
+    const x2 = Math.cos(a) * len, y2 = Math.sin(a) * len;
+    const bow = (rnd() - 0.5) * 6;
+    const mx = Math.cos(a) * len * 0.55 - Math.sin(a) * bow;
+    const my = Math.sin(a) * len * 0.55 + Math.cos(a) * bow;
+    g.appendChild(el("path", { d:`M0 0 Q ${mx.toFixed(1)} ${my.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`, fill:"none", stroke:"#5c7bb0", "stroke-width":1.1, "vector-effect":"non-scaling-stroke", "stroke-linecap":"round", opacity:op }));
+    for (const s of [-0.42, 0, 0.42]) {
+      const hx = x2 + Math.cos(a + s) * 3.2, hy = y2 + Math.sin(a + s) * 3.2;
+      g.appendChild(el("line", { x1:x2.toFixed(1), y1:y2.toFixed(1), x2:hx.toFixed(1), y2:hy.toFixed(1), stroke:"#8aa4cd", "stroke-width":0.9, "vector-effect":"non-scaling-stroke", "stroke-linecap":"round", opacity:op * 0.75 }));
+    }
+  }
+  for (let i = 0; i < 12; i++) {
+    const a = rnd() * Math.PI * 2, r = 3 + rnd() * 3.5;
+    g.appendChild(el("circle", { cx:(Math.cos(a) * r).toFixed(1), cy:(Math.sin(a) * r).toFixed(1), r:0.8, fill:"#48679c", opacity:0.7 }));
+  }
+  g.appendChild(el("circle", { cx:0, cy:0, r:2.6, fill:"#3f5f96" }));
+  g.appendChild(el("circle", { cx:-0.6, cy:-0.6, r:1.1, fill:"#a9c6ee" }));
+  return g;
+}
+function initHero(){
+  const trail = buildTrailPath();
+  document.getElementById('lilTrailPath').setAttribute('d', trail);
+  document.getElementById('lilMaskPath').setAttribute('d', trail);
+  document.getElementById('lilMotionAnim').setAttribute('path', trail);
+  document.getElementById('lilPuffWrap').appendChild(buildPuff());
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const reveal = document.getElementById("lilRevealAnim");
+    const motion = document.getElementById("lilMotionAnim");
+    try { motion && motion.beginElement(); } catch (e) {}
+    try { reveal && reveal.beginElement(); } catch (e) {}
+  }));
+}
+
+applyLang(getLang());
+initHero();
+</script>
 </body>
-
 </html>

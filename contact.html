@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto — Lil4Change</title>
+<meta name="description" content="El diseño importa. Si desarrollas videojuegos con propósito, queremos conocer tu trabajo.">
+<link rel="icon" href="assets/lil-logo7.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Nunito",system-ui,sans-serif;background:#f6f4ef;color:#2b3a53;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  @keyframes lilRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes lilDandelionIdle{0%,100%{transform:translate(0,0)}50%{transform:translate(1px,-4px)}}
+  @media (max-width:760px){ .lil-navlinks{display:none !important} .lil-hamburger{display:flex !important} .lil-desktoponly{display:none !important} }
+  @media (max-width:480px){ .lil-tagline{display:none !important} }
+  .lil-cta-primary{transition:transform .18s ease}
+  .lil-cta-primary:hover{transform:translateY(-2px)}
+  .lil-inp{width:100%;padding:12px 14px;border:1px solid rgba(63,127,212,.28);border-radius:12px;font-family:'Nunito',system-ui,sans-serif;font-size:15px;color:#2b3a53;background:#fff;outline:none;transition:border-color .15s,box-shadow .15s}
+  .lil-inp:focus{border-color:#3f7fd4;box-shadow:0 0 0 3px rgba(63,127,212,.15)}
+</style>
+</head>
+<body>
+<div style="min-height:100vh">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:40;backdrop-filter:blur(12px);background:rgba(246,244,239,.78);border-bottom:1px solid rgba(63,127,212,.12)">
+    <nav style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px">
+      <a href="index.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-right:auto">
+        <img src="assets/lil-logo7.png" alt="Lil4Change" style="width:44px;height:44px;border-radius:50%;box-shadow:0 4px 14px rgba(20,32,64,.28)">
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:20px;letter-spacing:.2px;color:#26364f">Lil<span style="color:#3f7fd4">4</span>Change</span>
+          <span class="lil-tagline" style="font-size:10.5px;color:#6b7c98;margin-top:3px;letter-spacing:.3px">Life is Learning</span>
+        </span>
+      </a>
+      <div style="display:flex;align-items:center;gap:24px" class="lil-navlinks">
+        <a href="index.html" data-i18n="navHome" style="color:#42536e;text-decoration:none;font-weight:700;font-size:15px">Inicio</a>
+        <a href="about.html" data-i18n="navAbout" style="color:#42536e;text-decoration:none;font-weight:700;font-size:15px">Sobre Lil</a>
+        <a href="games.html" data-i18n="navGames" style="color:#42536e;text-decoration:none;font-weight:700;font-size:15px">Juegos</a>
+        <a href="contact.html" data-i18n="navContact" style="color:#3f7fd4;text-decoration:none;font-weight:800;font-size:15px">Contacto</a>
+      </div>
+      <button onclick="toggleMenu()" aria-label="Menu" class="lil-hamburger" style="display:none;align-items:center;justify-content:center;width:42px;height:42px;background:rgba(63,127,212,.1);border:1px solid rgba(63,127,212,.28);border-radius:12px;cursor:pointer;order:5">
+        <svg id="lilIconOpen" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#3f7fd4" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"></line><line x1="3" y1="10" x2="17" y2="10"></line><line x1="3" y1="14" x2="17" y2="14"></line></svg>
+        <svg id="lilIconClose" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#3f7fd4" stroke-width="2" stroke-linecap="round" style="display:none"><line x1="4" y1="4" x2="16" y2="16"></line><line x1="16" y1="4" x2="4" y2="16"></line></svg>
+      </button>
+      <button onclick="toggleLang()" aria-label="Toggle language" class="lil-desktoponly" style="display:flex;align-items:center;gap:6px;background:rgba(63,127,212,.08);border:1px solid rgba(63,127,212,.25);color:#3f7fd4;font-family:'Nunito';font-weight:700;font-size:13px;padding:7px 12px;border-radius:999px;cursor:pointer">
+        <span id="lilEsA">ES</span><span style="opacity:.4">/</span><span id="lilEnA">EN</span>
+      </button>
+    </nav>
+    <div id="lilMobileMenu" style="display:none;flex-direction:column;padding:8px 24px 20px;gap:2px;border-top:1px solid rgba(63,127,212,.12)">
+      <a href="index.html" onclick="closeMenu()" data-i18n="navHome" style="color:#2b3a53;text-decoration:none;font-weight:700;font-size:17px;padding:13px 4px">Inicio</a>
+      <a href="about.html" onclick="closeMenu()" data-i18n="navAbout" style="color:#2b3a53;text-decoration:none;font-weight:700;font-size:17px;padding:13px 4px;border-top:1px solid rgba(63,127,212,.1)">Sobre Lil</a>
+      <a href="games.html" onclick="closeMenu()" data-i18n="navGames" style="color:#2b3a53;text-decoration:none;font-weight:700;font-size:17px;padding:13px 4px;border-top:1px solid rgba(63,127,212,.1)">Juegos</a>
+      <a href="contact.html" onclick="closeMenu()" data-i18n="navContact" style="color:#3f7fd4;text-decoration:none;font-weight:800;font-size:17px;padding:13px 4px;border-top:1px solid rgba(63,127,212,.1)">Contacto</a>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 4px 6px;border-top:1px solid rgba(63,127,212,.1)">
+        <span data-i18n="langLabel" style="font-size:14px;font-weight:700;color:#6b7c98">Idioma</span>
+        <button onclick="toggleLang()" aria-label="Toggle language" style="display:flex;align-items:center;gap:6px;background:rgba(63,127,212,.08);border:1px solid rgba(63,127,212,.25);color:#3f7fd4;font-family:'Nunito';font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px;cursor:pointer"><span id="lilEsB">ES</span><span style="opacity:.4">/</span><span id="lilEnB">EN</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section style="position:relative;overflow:hidden;background:linear-gradient(180deg,#dcecfb 0%,#eaf4fc 55%,#f6f4ef 100%);padding:76px 24px 44px">
+    <div style="position:relative;max-width:820px;margin:0 auto;text-align:center">
+      <span data-i18n="contactTag" style="display:inline-block;color:#3f7fd4;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;animation:lilRise .6s ease-out both">Contacto</span>
+      <h1 data-i18n="contactTitle" style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(32px,5.2vw,54px);line-height:1.08;letter-spacing:-.5px;margin:14px 0 0;color:#22334d;animation:lilRise .6s ease-out .1s both">El diseño importa.</h1>
+      <div style="width:66px;height:4px;border-radius:99px;background:linear-gradient(90deg,#5a97e6,#3f7fd4);margin:24px auto 0"></div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section style="max-width:720px;margin:0 auto;padding:36px 24px 8px">
+    <div id="lilContactIntro" style="display:flex;flex-direction:column;gap:18px"></div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section style="max-width:640px;margin:0 auto;padding:20px 24px 8px">
+    <div style="background:#fff;border:1px solid rgba(63,127,212,.16);border-radius:22px;padding:32px 32px 34px;box-shadow:0 12px 30px rgba(63,127,212,.08)">
+      <h2 id="lilFormTitle" style="font-family:'Fredoka';font-weight:600;font-size:22px;margin:0 0 18px;color:#22334d"></h2>
+      <form id="lilContactForm" onsubmit="return submitContact(event)" novalidate>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span id="lilNameLbl" style="font-size:13.5px;font-weight:700;color:#3a4a63"></span>
+            <input id="lilNameInp" name="lilName" type="text" required class="lil-inp">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span id="lilEmailLbl" style="font-size:13.5px;font-weight:700;color:#3a4a63"></span>
+            <input id="lilEmailInp" name="lilEmail" type="email" required class="lil-inp">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px">
+            <span id="lilMsgLbl" style="font-size:13.5px;font-weight:700;color:#3a4a63"></span>
+            <textarea id="lilMsgInp" name="lilMessage" required rows="5" class="lil-inp" style="resize:vertical;min-height:120px"></textarea>
+          </label>
+        </div>
+        <div class="h-captcha" data-captcha="true" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" style="margin-top:20px"></div>
+        <div style="margin-top:20px">
+          <button id="lilSubmitBtn" type="submit" class="lil-cta-primary" style="width:100%;display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#5a97e6,#3f7fd4);color:#fff;border:none;font-family:'Nunito';font-weight:800;font-size:16px;padding:15px 20px;border-radius:14px;box-shadow:0 10px 24px rgba(63,127,212,.32);cursor:pointer"></button>
+          <p id="lilFormStatus" role="status" aria-live="polite" style="font-size:14.5px;font-weight:700;margin:14px 0 0;text-align:center"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="max-width:1120px;margin:44px auto 0;padding:44px 24px 48px;border-top:1px solid rgba(63,127,212,.14)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px">
+      <div>
+        <a href="index.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;margin-bottom:16px">
+          <img src="assets/lil-logo7.png" alt="Lil4Change" style="width:40px;height:40px;border-radius:50%">
+          <span style="font-family:'Fredoka';font-weight:600;font-size:18px;color:#26364f">Lil<span style="color:#3f7fd4">4</span>Change</span>
+        </a>
+        <p data-i18n="footerDesc" style="font-size:15px;line-height:1.6;color:#51617b;margin:0;max-width:320px"></p>
+      </div>
+      <div>
+        <h5 data-i18n="footerNavTitle" style="font-family:'Fredoka';font-weight:600;font-size:16px;color:#26364f;margin:0 0 16px">Navegación</h5>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px">
+          <li><a href="index.html" data-i18n="navHome" style="color:#51617b;text-decoration:none;font-weight:600;font-size:15px">Inicio</a></li>
+          <li><a href="about.html" data-i18n="navAbout" style="color:#51617b;text-decoration:none;font-weight:600;font-size:15px">Sobre Lil</a></li>
+          <li><a href="games.html" data-i18n="navGames" style="color:#51617b;text-decoration:none;font-weight:600;font-size:15px">Juegos</a></li>
+          <li><a href="contact.html" data-i18n="navContact" style="color:#51617b;text-decoration:none;font-weight:600;font-size:15px">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-i18n="footerCopyright" style="margin-top:36px;padding-top:24px;border-top:1px solid rgba(63,127,212,.12);text-align:center;font-size:13.5px;color:#6b7c98"></div>
+  </footer>
+</div>
+
+<script>
+const WEB3FORMS_KEY = "b3a5045b-5ab5-4d66-956e-f9db56a6ac3a";
+
+// ─────────────────────────────────────────────────────────────
+//  hCaptcha spam protection.
+//  hCaptcha does NOT work on localhost / file:// (shows "invalid data").
+//  Leave this as false for local testing, then change it to true
+//  once the site is deployed to its real domain to turn the captcha on.
+const CAPTCHA_ENABLED = false;   // ← set to true when deployed
+// ─────────────────────────────────────────────────────────────
+
+const DICT = {
+  es: {
+    navHome:"Inicio", navAbout:"Sobre Lil", navGames:"Juegos", navContact:"Contacto", langLabel:"Idioma",
+    contactTag:"Contacto",
+    contactTitle:"El diseño importa.",
+    contactIntro:[
+      "Creemos que un buen videojuego es mucho más que entretenimiento.",
+      "Si desarrollas juegos que promuevan la exploración, la creatividad, la toma de decisiones o la resolución de problemas, queremos conocer tu trabajo.",
+      "Buscamos experiencias donde las capacidades emerjan naturalmente del juego, sin convertir el aprendizaje en una obligación."
+    ],
+    formTitle:"Escríbenos",
+    nameLabel:"Tu nombre", emailLabel:"Tu email", messageLabel:"Mensaje",
+    messagePlaceholder:"Cuéntanos sobre tu juego o proyecto…",
+    submit:"Enviar mensaje", sending:"Enviando…",
+    successMsg:"¡Gracias! Recibimos tu mensaje y te responderemos a la brevedad.",
+    errorMsg:"Hubo un problema al enviar. Intenta de nuevo.",
+    needFields:"Completa tu nombre, un email válido y un mensaje.",
+    needCaptcha:"Por favor, completa el captcha para continuar.",
+    footerDesc:"Videojuegos curados para potenciar el aprendizaje de niños y niñas de 9 a 13 años.",
+    footerNavTitle:"Navegación",
+    footerCopyright:"© 2026 Lil4Change. Todos los derechos reservados."
+  },
+  en: {
+    navHome:"Home", navAbout:"About Lil", navGames:"Games", navContact:"Contact", langLabel:"Language",
+    contactTag:"Contact",
+    contactTitle:"Design matters.",
+    contactIntro:[
+      "We believe a good video game is much more than entertainment.",
+      "If you develop games that encourage exploration, creativity, decision-making, or problem-solving, we'd love to see your work.",
+      "We look for experiences where abilities emerge naturally from play, without turning learning into an obligation."
+    ],
+    formTitle:"Write to us",
+    nameLabel:"Your name", emailLabel:"Your email", messageLabel:"Message",
+    messagePlaceholder:"Tell us about your game or project…",
+    submit:"Send message", sending:"Sending…",
+    successMsg:"Thank you! We received your message and will get back to you soon.",
+    errorMsg:"Something went wrong. Please try again.",
+    needFields:"Please enter your name, a valid email, and a message.",
+    needCaptcha:"Please complete the captcha to continue.",
+    footerDesc:"Curated video games to nurture the learning of kids ages 9 to 13.",
+    footerNavTitle:"Navigation",
+    footerCopyright:"© 2026 Lil4Change. All rights reserved."
+  }
+};
+
+function getLang(){ try { return localStorage.getItem('lil-lang') === 'en' ? 'en' : 'es'; } catch(e){ return 'es'; } }
+let menuOpen = false;
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function applyLang(lang){
+  const t = DICT[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if (t[k] != null) el.textContent = t[k];
+  });
+  document.getElementById('lilContactIntro').innerHTML = t.contactIntro.map(p=>
+    `<p style="font-size:17px;line-height:1.68;color:#3f4f68;margin:0">${esc(p)}</p>`).join('');
+  document.getElementById('lilFormTitle').textContent = t.formTitle;
+  document.getElementById('lilNameLbl').textContent = t.nameLabel;
+  document.getElementById('lilEmailLbl').textContent = t.emailLabel;
+  document.getElementById('lilMsgLbl').textContent = t.messageLabel;
+  document.getElementById('lilMsgInp').placeholder = t.messagePlaceholder;
+  document.getElementById('lilSubmitBtn').textContent = t.submit;
+  const on = "color:#22334d;font-weight:800", off = "color:#93a3bd;font-weight:600";
+  ['lilEsA','lilEsB'].forEach(id=>{ const e=document.getElementById(id); if(e) e.style.cssText = lang==='es'?on:off; });
+  ['lilEnA','lilEnB'].forEach(id=>{ const e=document.getElementById(id); if(e) e.style.cssText = lang==='en'?on:off; });
+  try { localStorage.setItem('lil-lang', lang); } catch(e){}
+}
+function toggleLang(){ applyLang(getLang()==='es'?'en':'es'); }
+function toggleMenu(){
+  menuOpen = !menuOpen;
+  document.getElementById('lilMobileMenu').style.display = menuOpen ? 'flex' : 'none';
+  document.getElementById('lilIconOpen').style.display = menuOpen ? 'none' : 'block';
+  document.getElementById('lilIconClose').style.display = menuOpen ? 'block' : 'none';
+}
+function closeMenu(){ if(menuOpen) toggleMenu(); }
+
+async function submitContact(e){
+  e.preventDefault();
+  const lang = getLang(), t = DICT[lang];
+  const name = document.getElementById('lilNameInp').value.trim();
+  const email = document.getElementById('lilEmailInp').value.trim();
+  const message = document.getElementById('lilMsgInp').value.trim();
+  const status = document.getElementById('lilFormStatus');
+  const btn = document.getElementById('lilSubmitBtn');
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if(!name || !emailOk || !message){
+    status.style.color = '#c0392b';
+    status.textContent = t.needFields;
+    return false;
+  }
+  let captchaToken = '';
+  if(CAPTCHA_ENABLED){
+    const captchaField = document.querySelector('#lilContactForm [name="h-captcha-response"]');
+    captchaToken = captchaField ? captchaField.value : '';
+    if(!captchaToken){
+      status.style.color = '#c0392b';
+      status.textContent = t.needCaptcha;
+      return false;
+    }
+  }
+  const fd = new FormData();
+  fd.append('access_key', WEB3FORMS_KEY);
+  fd.append('from_name', 'Lil4Change');
+  fd.append('subject', (lang==='es'?'Contacto':'Contact') + ' — Lil4Change');
+  fd.append('name', name);
+  fd.append('email', email);
+  if(CAPTCHA_ENABLED) fd.append('h-captcha-response', captchaToken);
+  fd.append('message', message);
+  btn.disabled = true; btn.style.opacity = '.7'; btn.textContent = t.sending;
+  status.style.color = '#6b7c98'; status.textContent = '';
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', { method:'POST', body: fd });
+    const data = await res.json();
+    if(data.success){
+      status.style.color = '#1f8a5b';
+      status.textContent = t.successMsg;
+      document.getElementById('lilContactForm').reset();
+      try { if(CAPTCHA_ENABLED && window.hcaptcha) window.hcaptcha.reset(); } catch(e){}
+    } else {
+      status.style.color = '#c0392b';
+      status.textContent = t.errorMsg;
+      try { if(CAPTCHA_ENABLED && window.hcaptcha) window.hcaptcha.reset(); } catch(e){}
+    }
+  } catch(err){
+    status.style.color = '#c0392b';
+    status.textContent = t.errorMsg;
+    try { if(CAPTCHA_ENABLED && window.hcaptcha) window.hcaptcha.reset(); } catch(e){}
+  }
+  btn.disabled = false; btn.style.opacity = '1'; btn.textContent = t.submit;
+  return false;
+}
+
+// Load the hCaptcha widget only when enabled; otherwise hide the placeholder.
+if(CAPTCHA_ENABLED){
+  const s = document.createElement('script');
+  s.src = 'https://web3forms.com/client/script.js';
+  s.async = true; s.defer = true;
+  document.head.appendChild(s);
+} else {
+  document.querySelectorAll('.h-captcha').forEach(el=>{ el.style.display = 'none'; });
+}
+
+applyLang(getLang());
+</script>
+</body>
+</html>
