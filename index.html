@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lil4Change — Life is Learning</title>
-<meta name="description" content="Videojuegos curados para potenciar el aprendizaje de niños y niñas de 9 a 13 años.">
+<meta name="description" id="lilMetaDesc" content="Transformando el tiempo de pantalla en tiempo de crecimiento.">
+<meta property="og:type" content="website">
+<meta property="og:title" id="lilOgTitle" content="Lil4Change — Life is Learning">
+<meta property="og:description" id="lilOgDesc" content="Transformando el tiempo de pantalla en tiempo de crecimiento.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" id="lilTwTitle" content="Lil4Change — Life is Learning">
+<meta name="twitter:description" id="lilTwDesc" content="Transformando el tiempo de pantalla en tiempo de crecimiento.">
 <link rel="icon" href="assets/lil-logo7.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -208,7 +214,8 @@ const DICT = {
     finalBtn:"Ver los juegos",
     footerDesc:"Life is Learning. Transformando el tiempo de pantalla en tiempo de crecimiento.",
     footerNavTitle:"Navegación",
-    footerCopyright:"© 2026 Lil4Change. Todos los derechos reservados."
+    footerCopyright:"© 2026 Lil4Change. Todos los derechos reservados.",
+    metaDescription:"Transformando el tiempo de pantalla en tiempo de crecimiento."
   },
   en: {
     navHome:"Home", navAbout:"About Lil", navGames:"Games", navContact:"Contact", langLabel:"Language",
@@ -243,7 +250,8 @@ const DICT = {
     finalBtn:"See the games",
     footerDesc:"Life is Learning. Turning screen time into growth time.",
     footerNavTitle:"Navigation",
-    footerCopyright:"© 2026 Lil4Change. All rights reserved."
+    footerCopyright:"© 2026 Lil4Change. All rights reserved.",
+    metaDescription:"Turning screen time into growth time."
   }
 };
 
@@ -265,6 +273,9 @@ function applyLang(lang){
   document.getElementById('lilWhyParas').innerHTML = t.whyParas.map(p=>`<p style="font-size:17.5px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
   document.getElementById('lilFinalTitle').innerHTML = t.finalTitleLines.map(l=>`<span style="display:block;margin:0 0 6px">${esc(l)}</span>`).join('');
   document.getElementById('lilFinalSub').innerHTML = t.finalSub.map(l=>`<p style="font-size:clamp(14px,1.7vw,17px);color:rgba(255,255,255,.92);margin:0 0 5px;line-height:1.4">${esc(l)}</p>`).join('');
+  document.getElementById('lilMetaDesc').setAttribute('content', t.metaDescription);
+  document.getElementById('lilOgDesc').setAttribute('content', t.metaDescription);
+  document.getElementById('lilTwDesc').setAttribute('content', t.metaDescription);
   const on = "color:#22334d;font-weight:800", off = "color:#93a3bd;font-weight:600";
   ['lilEsA','lilEsB'].forEach(id=>document.getElementById(id).style.cssText = lang==='es'?on:off);
   ['lilEnA','lilEnB'].forEach(id=>document.getElementById(id).style.cssText = lang==='en'?on:off);
