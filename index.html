@@ -261,8 +261,7 @@
   <!-- ACCIÓN FINAL -->
   <section style="max-width:1120px;margin:0 auto;padding:20px 24px 24px">
     <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,#4f8fe0,#3f7fd4);border-radius:28px;padding:clamp(40px,6vw,68px);text-align:center;box-shadow:0 20px 50px rgba(63,127,212,.3)">
-      <div style="position:absolute;top:-30px;right:-10px;color:#ffe6a6;opacity:.55;font-size:44px;animation:lilFloat 5s ease-in-out infinite">✦</div>
-      <h2 id="lilFinalTitle" style="font-family:'Fredoka';font-weight:600;font-size:clamp(24px,3.6vw,36px);margin:0 auto;color:#fff;letter-spacing:-.3px;max-width:760px;line-height:1.28"></h2>
+      <h2 id="lilFinalTitle" style="font-family:'Fredoka';font-weight:600;font-size:clamp(26px,4vw,38px);margin:0 auto;color:#fff;letter-spacing:-.3px;max-width:760px;line-height:1.28"></h2>
       <div id="lilFinalSub" style="margin:16px auto 0;max-width:820px"></div>
       <div style="display:flex;justify-content:center;margin-top:30px">
         <a href="games.html" class="lil-cta-primary" data-i18n="finalBtn" style="background:#fff;color:#3f7fd4;text-decoration:none;font-weight:800;font-size:16px;padding:16px 34px;border-radius:999px;box-shadow:0 12px 28px rgba(20,40,80,.25)">Ver los juegos</a>
@@ -387,7 +386,7 @@ function applyLang(lang){
   document.getElementById('lilOutlookDesc').innerHTML = t.outlookDesc.map(p=>`<p style="font-size:16px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
   document.getElementById('lilWhyParas').innerHTML = t.whyParas.map(p=>`<p style="font-size:17.5px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
   document.getElementById('lilFinalTitle').innerHTML = t.finalTitleLines.map(l=>`<span style="display:block;margin:0 0 6px">${esc(l)}</span>`).join('');
-  document.getElementById('lilFinalSub').innerHTML = t.finalSub.map(l=>`<p style="font-size:clamp(14px,1.7vw,17px);color:rgba(255,255,255,.92);margin:0 0 5px;line-height:1.4">${esc(l)}</p>`).join('');
+  document.getElementById('lilFinalSub').innerHTML = t.finalSub.map(l=>`<p style="font-size:17.5px;color:rgba(255,255,255,.92);margin:0 0 5px;line-height:1.6">${esc(l)}</p>`).join('');
   document.getElementById('lilMetaDesc').setAttribute('content', t.metaDescription);
   document.getElementById('lilOgDesc').setAttribute('content', t.metaDescription);
   document.getElementById('lilTwDesc').setAttribute('content', t.metaDescription);
