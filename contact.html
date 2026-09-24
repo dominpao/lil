@@ -253,8 +253,8 @@ function renderRoleCards(t){
   };
   wrapEl.querySelectorAll('.lil-rc-wrap').forEach(w=>{
     const idx = +w.getAttribute('data-idx');
-    w.addEventListener('mouseenter', ()=>show(idx));
-    w.addEventListener('focus', ()=>show(idx));
+    w.addEventListener('mouseenter', ()=>{ if(!('ontouchstart' in window)) show(idx); });
+    w.addEventListener('focus', ()=>{ if(!('ontouchstart' in window)) show(idx); });
     w.addEventListener('click', (e)=>{
       e.preventDefault();
       w.classList.contains('lil-open') ? hide() : show(idx);
