@@ -22,6 +22,16 @@
   .lil-cta-primary:hover{transform:translateY(-2px)}
   .lil-inp{width:100%;padding:12px 14px;border:1px solid rgba(63,127,212,.28);border-radius:12px;font-family:'Nunito',system-ui,sans-serif;font-size:15px;color:#2b3a53;background:#fff;outline:none;transition:border-color .15s,box-shadow .15s}
   .lil-inp:focus{border-color:#3f7fd4;box-shadow:0 0 0 3px rgba(63,127,212,.15)}
+  .lil-rc-wrap{position:relative;display:inline-block}
+  .lil-rc-badge{cursor:pointer;font-family:'Nunito',system-ui,sans-serif;font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;border:1px solid rgba(63,127,212,.25);background:rgba(63,127,212,.08);color:#3f7fd4;box-shadow:0 4px 10px rgba(63,127,212,.12);transition:background .15s,color .15s,box-shadow .15s;outline:none}
+  .lil-rc-wrap:hover .lil-rc-badge, .lil-rc-wrap:focus-within .lil-rc-badge, .lil-rc-wrap.lil-open .lil-rc-badge{background:#3f7fd4;color:#fff;box-shadow:0 8px 18px rgba(63,127,212,.28)}
+  .lil-rc-panel{display:inline-block;width:fit-content;max-width:100%;max-height:0;overflow:hidden;border-radius:16px;margin-top:0;transition:max-height .45s cubic-bezier(.22,1,.36,1),margin-top .45s cubic-bezier(.22,1,.36,1)}
+  .lil-rc-panel.lil-open{margin-top:14px}
+  .lil-rc-card{background:#fff;border-radius:16px;padding:16px 18px;opacity:0;transition:opacity .18s ease}
+  .lil-rc-panel.lil-open .lil-rc-card{opacity:1}
+  .lil-rc-card.lil-shadow{box-shadow:0 14px 30px rgba(20,40,80,.14)}
+  .lil-rc-card p{margin:0;font-size:15px;line-height:1.6;color:#3f4f68;white-space:nowrap}
+  @media (max-width:520px){ .lil-rc-card p{white-space:normal} }
 </style>
 </head>
 <body>
@@ -92,6 +102,10 @@
             <input id="lilEmailInp" name="lilEmail" type="email" required class="lil-inp">
           </label>
           <label style="display:flex;flex-direction:column;gap:6px">
+            <span id="lilRoleLbl" style="font-size:13.5px;font-weight:700;color:#3a4a63"></span>
+            <select id="lilRoleInp" name="lilRole" class="lil-inp"></select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px">
             <span id="lilMsgLbl" style="font-size:13.5px;font-weight:700;color:#3a4a63"></span>
             <textarea id="lilMsgInp" name="lilMessage" required rows="5" class="lil-inp" style="resize:vertical;min-height:120px"></textarea>
           </label>
@@ -147,13 +161,23 @@ const DICT = {
     contactTitle:"El diseño importa.",
     contactIntro:[
       "Cada decisión de diseño crea una experiencia.",
-      "Y cada experiencia puede dejar una huella.",
-      "Si estás desarrollando un videojuego que invite a explorar, crear, pensar, descubrir o imaginar, queremos conocer tu trabajo.",
-      "En Lil4Change buscamos construir una red de desarrolladores que compartan una misma convicción: que el juego también puede ayudar a desplegar el potencial único de cada persona."
+      "Y cada experiencia puede abrir distintas posibilidades para quien juega.",
+      "En LIL4Change investigamos qué sucede cuando las personas juegan y cómo las características de cada videojuego pueden favorecer distintas formas de explorar, resolver, crear y aprender.",
+      "Nos interesa conocer distintas miradas y experiencias.",
+      "En LIL4Change buscamos construir una comunidad que comparta una misma convicción: que el juego también puede ayudar a desplegar el potencial único de cada persona."
+    ],
+    roleTexts:[
+      {label:"Jugador/a", text:"Queremos conocer tu experiencia con nuestra selección de juegos."},
+      {label:"Familia", text:"Cuéntanos qué descubrieron mientras jugaban."},
+      {label:"Docente / Profesional", text:"Tus observaciones y aportes son valiosos para nosotros."},
+      {label:"Desarrollador/a", text:"Queremos que nos cuentes sobre tu trabajo y tus propuestas."}
     ],
     formTitle:"Escríbenos",
     nameLabel:"Tu nombre", emailLabel:"Tu email", messageLabel:"Mensaje",
-    messagePlaceholder:"Cuéntanos sobre tu juego o proyecto…",
+    roleLabel:"¿Desde qué lugar nos escribes?",
+    rolePlaceholder:"Elegí una opción",
+    roleOptions:["Jugador/a","Familia","Docente","Profesional","Desarrollador/a","Otro"],
+    messagePlaceholder:"Déjanos tus comentarios…",
     submit:"Enviar mensaje", sending:"Enviando…",
     successMsg:"¡Gracias! Recibimos tu mensaje y te responderemos a la brevedad.",
     errorMsg:"Hubo un problema al enviar. Intenta de nuevo.",
@@ -169,13 +193,23 @@ const DICT = {
     contactTitle:"Design matters.",
     contactIntro:[
       "Every design decision creates an experience.",
-      "And every experience can leave a mark.",
-      "If you're developing a video game that invites players to explore, create, think, discover, or imagine, we want to know about your work.",
-      "At Lil4Change, we're building a network of developers who share one conviction: that play can also help unlock each person's unique potential."
+      "And every experience can open up different possibilities for the person playing.",
+      "At Lil4Change we look into what happens when people play, and how each video game's characteristics can support different ways of exploring, solving, creating, and learning.",
+      "We're interested in hearing different perspectives and experiences.",
+      "At Lil4Change we're building a community united by one conviction: that play can also help unlock each person's unique potential."
+    ],
+    roleTexts:[
+      {label:"Player", text:"We want to know about your experience with our selection of games."},
+      {label:"Family", text:"Tell us what you discovered while you played."},
+      {label:"Teacher / Professional", text:"Your observations and insights are valuable to us."},
+      {label:"Developer", text:"We want to hear about your work and your ideas."}
     ],
     formTitle:"Write to us",
     nameLabel:"Your name", emailLabel:"Your email", messageLabel:"Message",
-    messagePlaceholder:"Tell us about your game or project…",
+    roleLabel:"Where are you writing from?",
+    rolePlaceholder:"Choose an option",
+    roleOptions:["Player","Family","Teacher","Professional","Developer","Other"],
+    messagePlaceholder:"Leave us your comments…",
     submit:"Send message", sending:"Sending…",
     successMsg:"Thank you! We received your message and will get back to you soon.",
     errorMsg:"Something went wrong. Please try again.",
@@ -190,6 +224,43 @@ const DICT = {
 function getLang(){ try { return localStorage.getItem('lil-lang') === 'en' ? 'en' : 'es'; } catch(e){ return 'es'; } }
 let menuOpen = false;
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function renderRoleCards(t){
+  const wrapEl = document.getElementById('lilRoleCards');
+  const panelEl = document.getElementById('lilRolePanel');
+  const textEl = document.getElementById('lilRolePanelText');
+  if(!wrapEl || !panelEl || !textEl) return;
+  wrapEl.innerHTML = t.roleTexts.map((r,i)=>
+    `<div class="lil-rc-wrap" data-idx="${i}"><button type="button" class="lil-rc-badge">${esc(r.label)}</button></div>`
+  ).join('');
+  const card = panelEl.querySelector('.lil-rc-card');
+  const show = (idx)=>{
+    clearTimeout(window.__lilRoleShadowTimer);
+    card.classList.remove('lil-shadow');
+    textEl.textContent = t.roleTexts[idx].text;
+    panelEl.classList.add('lil-open');
+    panelEl.style.maxHeight = card.scrollHeight + 'px';
+    wrapEl.querySelectorAll('.lil-rc-wrap').forEach(w=>
+      w.classList.toggle('lil-open', +w.getAttribute('data-idx')===idx));
+    window.__lilRoleShadowTimer = setTimeout(()=>card.classList.add('lil-shadow'), 460);
+  };
+  const hide = ()=>{
+    clearTimeout(window.__lilRoleShadowTimer);
+    card.classList.remove('lil-shadow');
+    panelEl.classList.remove('lil-open');
+    panelEl.style.maxHeight = '0px';
+    wrapEl.querySelectorAll('.lil-rc-wrap').forEach(w=>w.classList.remove('lil-open'));
+  };
+  wrapEl.querySelectorAll('.lil-rc-wrap').forEach(w=>{
+    const idx = +w.getAttribute('data-idx');
+    w.addEventListener('mouseenter', ()=>show(idx));
+    w.addEventListener('focus', ()=>show(idx));
+    w.addEventListener('click', (e)=>{
+      e.preventDefault();
+      w.classList.contains('lil-open') ? hide() : show(idx);
+    });
+  });
+  wrapEl.addEventListener('mouseleave', ()=>{ if(!('ontouchstart' in window)) hide(); });
+}
 
 function applyLang(lang){
   const t = DICT[lang];
@@ -198,11 +269,26 @@ function applyLang(lang){
     const k = el.getAttribute('data-i18n');
     if (t[k] != null) el.textContent = t[k];
   });
-  document.getElementById('lilContactIntro').innerHTML = t.contactIntro.map(p=>
-    `<p style="font-size:17px;line-height:1.68;color:#3f4f68;margin:0">${esc(p)}</p>`).join('');
+  const introParas = t.contactIntro.map(p=>
+    `<p style="font-size:17px;line-height:1.68;color:#3f4f68;margin:0">${esc(p)}</p>`);
+  const roleBlock = `<div>
+    <div id="lilRoleCards" style="display:flex;flex-wrap:wrap;gap:10px"></div>
+    <div id="lilRolePanel" class="lil-rc-panel">
+      <div class="lil-rc-card"><p id="lilRolePanelText"></p></div>
+    </div>
+  </div>`;
+  document.getElementById('lilContactIntro').innerHTML =
+    introParas.slice(0,4).join('') + roleBlock + introParas.slice(4).join('');
+  renderRoleCards(t);
   document.getElementById('lilFormTitle').textContent = t.formTitle;
   document.getElementById('lilNameLbl').textContent = t.nameLabel;
   document.getElementById('lilEmailLbl').textContent = t.emailLabel;
+  document.getElementById('lilRoleLbl').textContent = t.roleLabel;
+  const roleSel = document.getElementById('lilRoleInp');
+  const prevIdx = roleSel.selectedIndex;
+  roleSel.innerHTML = `<option value="" disabled ${prevIdx<=0?'selected':''}>${esc(t.rolePlaceholder)}</option>` +
+    t.roleOptions.map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join('');
+  if (prevIdx > 0) roleSel.selectedIndex = prevIdx;
   document.getElementById('lilMsgLbl').textContent = t.messageLabel;
   document.getElementById('lilMsgInp').placeholder = t.messagePlaceholder;
   document.getElementById('lilSubmitBtn').textContent = t.submit;
@@ -225,6 +311,7 @@ async function submitContact(e){
   const lang = getLang(), t = DICT[lang];
   const name = document.getElementById('lilNameInp').value.trim();
   const email = document.getElementById('lilEmailInp').value.trim();
+  const role = document.getElementById('lilRoleInp').value;
   const message = document.getElementById('lilMsgInp').value.trim();
   const status = document.getElementById('lilFormStatus');
   const btn = document.getElementById('lilSubmitBtn');
@@ -250,6 +337,7 @@ async function submitContact(e){
   fd.append('subject', (lang==='es'?'Contacto':'Contact') + ' — Lil4Change');
   fd.append('name', name);
   fd.append('email', email);
+  if(role) fd.append('role', role);
   if(CAPTCHA_ENABLED) fd.append('h-captcha-response', captchaToken);
   fd.append('message', message);
   btn.disabled = true; btn.style.opacity = '.7'; btn.textContent = t.sending;
