@@ -483,5 +483,58 @@ initHero();
 initReveal();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9a4043b0ff1a4733b459c253d428bbf3"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cookie consent + Google Analytics -->
+<style>
+#lilCookieBanner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#22334d;color:#f6f4ef;padding:16px 20px;display:none;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;font-family:"Nunito",system-ui,sans-serif;font-size:14px;box-shadow:0 -2px 12px rgba(0,0,0,.15)}
+#lilCookieBanner p{margin:0;max-width:560px;line-height:1.4}
+#lilCookieBanner .lilCookieBtns{display:flex;gap:10px}
+#lilCookieBanner button{font-family:"Nunito",system-ui,sans-serif;font-weight:700;font-size:13px;padding:8px 18px;border-radius:999px;border:none;cursor:pointer}
+#lilCookieAccept{background:#3f7fd4;color:#fff}
+#lilCookieReject{background:transparent;color:#f6f4ef;border:1px solid rgba(246,244,239,.5)!important}
+@media (max-width:480px){#lilCookieBanner{flex-direction:column;text-align:center}}
+</style>
+<div id="lilCookieBanner" role="dialog" aria-label="Aviso de cookies">
+<p>Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo aceptás.</p>
+<div class="lilCookieBtns"><button id="lilCookieReject" type="button">Rechazar</button><button id="lilCookieAccept" type="button">Aceptar</button></div>
+</div>
+<script>
+(function(){
+var KEY='lilCookieConsent';
+var GA_ID='G-HTQX284G82';
+function loadGA(){
+if(window.__lilGAloaded) return;
+window.__lilGAloaded = true;
+var s = document.createElement('script');
+s.async = true;
+s.src = 'https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+document.head.appendChild(s);
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+window.gtag = gtag;
+gtag('js', new Date());
+gtag('config', GA_ID);
+}
+var consent = null;
+try { consent = localStorage.getItem(KEY); } catch(e) {}
+if (consent === 'accepted') {
+loadGA();
+} else if (consent !== 'rejected') {
+var banner = document.getElementById('lilCookieBanner');
+if (banner) banner.style.display = 'flex';
+}
+var acceptBtn = document.getElementById('lilCookieAccept');
+var rejectBtn = document.getElementById('lilCookieReject');
+if (acceptBtn) acceptBtn.addEventListener('click', function(){
+try { localStorage.setItem(KEY, 'accepted'); } catch(e) {}
+document.getElementById('lilCookieBanner').style.display = 'none';
+loadGA();
+});
+if (rejectBtn) rejectBtn.addEventListener('click', function(){
+try { localStorage.setItem(KEY, 'rejected'); } catch(e) {}
+document.getElementById('lilCookieBanner').style.display = 'none';
+});
+})();
+</script>
+<!-- End cookie consent + Google Analytics -->
 </body>
 </html>
