@@ -159,6 +159,7 @@ const CAPTCHA_ENABLED = false;   // ← set to true when deployed
 
 const DICT = {
   es: {
+    cookieMsg:"Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo aceptás.", cookieReject:"Rechazar", cookieAccept:"Aceptar",
     navHome:"Inicio", navAbout:"Sobre Lil", navGames:"Juegos", navContact:"Contacto", langLabel:"Idioma",
     contactTag:"Contacto",
     contactTitle:"El diseño importa.",
@@ -191,6 +192,7 @@ const DICT = {
     footerCopyright:"© 2026 Lil4Change. Todos los derechos reservados."
   },
   en: {
+    cookieMsg:"We use Google Analytics to understand how the site is used. It only activates if you accept.", cookieReject:"Decline", cookieAccept:"Accept",
     navHome:"Home", navAbout:"About Lil", navGames:"Games", navContact:"Contact", langLabel:"Language",
     contactTag:"Contact",
     contactTitle:"Design matters.",
@@ -391,8 +393,8 @@ applyLang(getLang());
 @media (max-width:480px){#lilCookieBanner{flex-direction:column;text-align:center}}
 </style>
 <div id="lilCookieBanner" role="dialog" aria-label="Aviso de cookies">
-<p>Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo aceptás.</p>
-<div class="lilCookieBtns"><button id="lilCookieReject" type="button">Rechazar</button><button id="lilCookieAccept" type="button">Aceptar</button></div>
+<p data-i18n="cookieMsg">Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo aceptás.</p>
+<div class="lilCookieBtns"><button id="lilCookieReject" type="button" data-i18n="cookieReject">Rechazar</button><button id="lilCookieAccept" type="button" data-i18n="cookieAccept">Aceptar</button></div>
 </div>
 <script>
 (function(){
@@ -430,6 +432,7 @@ if (rejectBtn) rejectBtn.addEventListener('click', function(){
 try { localStorage.setItem(KEY, 'rejected'); } catch(e) {}
 document.getElementById('lilCookieBanner').style.display = 'none';
 });
+try { applyLang(getLang()); } catch(e) {}
 })();
 </script>
 <!-- End cookie consent + Google Analytics -->
