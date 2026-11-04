@@ -223,7 +223,7 @@ const CAPTCHA_ENABLED = false;   // ← set to true when deployed
 
 const UI = {
   es: {
-    cookieMsg:"Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo aceptás.", cookieReject:"Rechazar", cookieAccept:"Aceptar",
+    cookieMsg:"Este sitio web utiliza cookies para mejorar su experiencia.", cookieReject:"Rechazar", cookieAccept:"Aceptar",
     navHome:"Inicio", navAbout:"Sobre Lil", navGames:"Juegos", navContact:"Contacto",
     aboutLabel:"Sobre el juego", whyLabel:"¿Por qué lo elegimos?",
     freeLabel:"Gratis", playNow:"Jugar ahora", opensExternal:"Se abre en el sitio del juego, en una pestaña nueva.",
@@ -264,7 +264,7 @@ const UI = {
     footerCopyright:"© 2026 Lil4Change. Todos los derechos reservados."
   },
   en: {
-    cookieMsg:"We use Google Analytics to understand how the site is used. It only activates if you accept.", cookieReject:"Decline", cookieAccept:"Accept",
+    cookieMsg:"This website uses cookies to improve your experience.", cookieReject:"Decline", cookieAccept:"Accept",
     navHome:"Home", navAbout:"About Lil", navGames:"Games", navContact:"Contact",
     aboutLabel:"About the game", whyLabel:"Why we chose it",
     freeLabel:"Free", playNow:"Play now", opensExternal:"Opens on the game's site, in a new tab.",
@@ -654,8 +654,8 @@ applyLang(getLang());
 @media (max-width:480px){#lilCookieBanner{flex-direction:column;text-align:center}}
 </style>
 <div id="lilCookieBanner" role="dialog" aria-label="Aviso de cookies">
-<p data-i18n="cookieMsg">Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo aceptás.</p>
-<div class="lilCookieBtns"><button id="lilCookieReject" type="button" data-i18n="cookieReject">Rechazar</button><button id="lilCookieAccept" type="button" data-i18n="cookieAccept">Aceptar</button></div>
+<p data-i18n="cookieMsg">Este sitio web utiliza cookies para mejorar su experiencia.</p>
+<div class="lilCookieBtns"><button id="lilCookieAccept" type="button" data-i18n="cookieAccept">Aceptar</button><button id="lilCookieReject" type="button" data-i18n="cookieReject">Rechazar</button></div>
 </div>
 <script>
 (function(){
