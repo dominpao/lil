@@ -107,7 +107,7 @@
     <div style="position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px">
       <div style="max-width:720px;padding:104px 0 116px">
         <h1 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(36px,5.6vw,62px);line-height:1.06;margin:0;letter-spacing:-.6px;color:#22334d;animation:lilRise .7s ease-out both"><span data-i18n="heroPre">Transformando el tiempo de pantalla en</span> <span style="color:#3f7fd4" data-i18n="heroHighlight">tiempo de crecimiento.</span></h1>
-        <p id="lilHeroDesc" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#000;margin:24px 0 0;max-width:700px;animation:lilRise .7s ease-out .15s both"></p>
+        <p id="lilHeroDesc" style="font-size:clamp(17.5px,2vw,20px);line-height:1.55;color:#000;margin:24px 0 0;max-width:700px;animation:lilRise .7s ease-out .15s both"></p>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;animation:lilRise .7s ease-out .3s both">
           <a href="#como-lo-hacemos" class="lil-cta-primary" data-i18n="heroCta" style="background:linear-gradient(135deg,#5a97e6,#3f7fd4);color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:15px 30px;border-radius:999px;box-shadow:0 10px 24px rgba(63,127,212,.35)">Conocer nuestra propuesta</a>
         </div>
@@ -389,8 +389,8 @@ function applyLang(lang){
     if (t[k] != null) el.textContent = t[k];
   });
   document.getElementById('lilHeroDesc').innerHTML = t.heroDescLines.map(l=>`<span style="display:block">${esc(l)}</span>`).join('');
-  document.getElementById('lilCurationParas').innerHTML = t.curationParas.map(p=>`<p style="font-size:16px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
-  document.getElementById('lilOutlookDesc').innerHTML = t.outlookDesc.map(p=>`<p style="font-size:16px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
+  document.getElementById('lilCurationParas').innerHTML = t.curationParas.map(p=>`<p style="font-size:17.5px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
+  document.getElementById('lilOutlookDesc').innerHTML = t.outlookDesc.map(p=>`<p style="font-size:17.5px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
   document.getElementById('lilWhyParas').innerHTML = t.whyParas.map(p=>`<p style="font-size:17.5px;line-height:1.6;color:#51617b;margin:0">${esc(p)}</p>`).join('');
   document.getElementById('lilFinalTitle').innerHTML = t.finalTitleLines.map(l=>`<span style="display:block;margin:0 0 6px">${esc(l)}</span>`).join('');
   document.getElementById('lilFinalSub').innerHTML = t.finalSub.map(l=>`<p style="font-size:17.5px;color:rgba(255,255,255,.92);margin:0 0 5px;line-height:1.6">${esc(l)}</p>`).join('');
